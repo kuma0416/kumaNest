@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kuma窩</title>
+    <style>
+        div {
+            margin: 20px;
+        }
+
+        header {
+            display: block;
+            text-align: justify;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            top: 0;
+            font-family: Arial;
+            height: 60px;
+            font-size:25px;
+            width:100%;
+            left: 0;
+            padding-top:20px;
+        }
+
+        #listSpace {
+            width: 60%;
+        }
+
+        #listform {
+            text-align: top;
+            text-align: left;
+            width: 60px;
+        }
+
+        #loginForm {
+            margin-top: 100px;
+            width: 40%;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Kuma窩
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="search" name="search" style="width:500px;height:20px;"></input>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" id="search" value="搜尋" style="height:30px;width:50px;"></input>
+        </header>
+    </div>
+    <span style="width:10%;display:inline-block;">
+        <ul>
+        <li>輕小說</li>
+        <li>PVC</li>
+        <li>景品</li>
+        <li>CD</li>
+        <li>藍光</li>
+        <li>周邊商品</li>
+        </ul>
+    </span>
+    <span style="width:60%;display:inline-block;">
+            <ul>
+                <li>輕小說</li>
+                <li>PVC</li>
+                <li>景品</li>
+                <li>CD</li>
+                <li>藍光</li>
+                <li>周邊商品</li>
+            </ul>
+    </span>
+    <span style="width:15%;display:inline-block;">
+        <fieldset>
+            會員區
+            <hr>
+            <% if(username) { %>
+            Hi <%= username %>
+            <a href="/logout">登出</a>
+            <% } else { %>
+            <a href="/login">登入</a>
+            <a href="/reg">註冊</a>
+            <% } %>
+            <hr>
+        </fieldset>
+    </span>
+    <a href="shoppingCar" title="/"><img src="http://www.shejiye.com/uploadfile/icon/2017/0203/shejiyeiconw5srzpxcvue.png" style="position:fixed;bottom:0;right:0;width:150px;"></a>
+<!--
+    <span>
+        <a id="loginForm" href="/reg">註冊</a>
+    </span>
+-->
+    <% if(duplicate == false) {%>
+    <script language="javascript">
+    alert('創建成功');
+    </script>
+    <% } %>
+    <% if(login == "success") {%>
+        <script language="javascript">
+        alert('登入成功');
+        </script>
+    <% } %>
+</body>
+</html>

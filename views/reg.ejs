@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>註冊</title>
+    <style>
+        div {
+            margin: 20px;
+        }
+
+        header {
+            display: block;
+            text-align: center;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            top: 0;
+            font-family: Arial;
+            height: 60px;
+            font-size:25px;
+            width:100%;
+            left: 0;
+            padding-top:20px;
+        }
+
+        #listSpace {
+            width: 60%;
+        }
+
+        #listform {
+            text-align: top;
+            text-align: left;
+            width: 60px;
+        }
+
+        #loginForm {
+            margin-top: 100px;
+            width: 40%;
+            height: 30px;
+        }
+
+        a:visited{
+            text-decoration: none;
+            color:#FF8800;
+        }
+
+        a:hover{
+            background-color:#0044BB;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="\">Kuma窩</a>
+    </header>
+    <div id="listSpace">
+        <h2>註冊</h2>
+        <form id="list" method="POST">
+            <div>
+                <fieldset style="width: 40%;">
+                    <div>帳號:<input type="text" name="account" id="account" required></div>
+                    <div>密碼:<input type="password" name="password" id="password" required></div>
+                    <div>使用者名稱:<input type="text" name="username" id="username" required></div>
+                    <input id="send" type="submit" value="註冊">
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <% if(duplicate == true) {%>
+    <script language="javascript">
+    alert('此帳號已有人使用');
+    </script>
+    <% } %>
+</body>
+</html>
