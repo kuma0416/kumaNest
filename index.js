@@ -6,6 +6,7 @@ var fs = require('fs');
 var db = require('./db');
 const port = 3000;
 var session = require('express-session');
+var formidable = require('formidable');
 
 function render(filename, params) {
   var data = fs.readFileSync(filename, 'utf8');
@@ -85,6 +86,28 @@ app.post('/login', function(req, res){
       })
     }
   });
+});
+
+app.get('/home/:catogories', function(req, res){
+  res.render('item',{
+    catogories: req.params.catogories
+  });
+});
+
+app.get('/addItem', function(req, res){
+  res.render('addItem');
+});
+
+app.post('/addItem', function(req, res){
+  var form = new formidable.IncomingForm();
+  form.parse(req, function (err, fields, files){
+    if(err) throw err;
+    console.log("fields: ", fields, "files: ", files);
+    res.render('itemTry', {
+      files: files
+    });
+  });
+  //res.redirect('/');
 });
 
 app.get('/logout', function(req, res){
