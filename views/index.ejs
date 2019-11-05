@@ -53,12 +53,12 @@
     </div>
     <span style="width:10%;display:inline-block;">
         <ul>
-        <li>輕小說</li>
-        <li>PVC</li>
-        <li>景品</li>
-        <li>CD</li>
-        <li>藍光</li>
-        <li>周邊商品</li>
+        <li><a href="/home/lightnovel">輕小說</a></li>
+        <li><a href="/home/PVC">PVC</a></li>
+        <li><a href="/home/figurine">景品</a></li>
+        <li><a href="/home/CD">CD</a></li>
+        <li><a href="/home/blu-ray">藍光</a></li>
+        <li><a href="/home/related-product">周邊商品</a></li>
         </ul>
     </span>
     <span style="width:60%;display:inline-block;">
@@ -78,6 +78,8 @@
             <% if(username) { %>
             Hi <%= username %>
             <a href="/logout">登出</a>
+            <br>
+            <a href="/addItem">新增商品</a>
             <% } else { %>
             <a href="/login">登入</a>
             <a href="/reg">註冊</a>

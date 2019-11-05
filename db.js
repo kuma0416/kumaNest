@@ -50,12 +50,16 @@ exports.loginCheck = function loginCheck(account, password, callback){
     db.collection('userspace', function(err, collection){
       collection.findOne({account: account})
         .then(function(check){
-          if(account === check.account && password === check.password){
-            callback("success",check.username);
-          } else {
+          if(check == null){
             callback("fail","");
+          } else if(account === check.account && password === check.password){
+            callback("success",check.username);
           }
         })
     });
   });
+}
+//新增商品
+exports.addItem = function addItem(itemName, itemPrice, itemPicture){
+  
 }
