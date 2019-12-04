@@ -94,27 +94,37 @@ app.get('/home/:catogories', function(req, res){
   });
 });
 
-app.get('/addItem', function(req, res){
-  res.render('addItem');
+app.get('/addItem/:username', function(req, res){
+  var username = req.params.username;
+  res.render('addItem',{
+    username: username
+  });
 });
-
 app.post('/addItem', function(req, res){
+  var username = req.session;
+  console.log(username);
   var form = new formidable.IncomingForm();
+  form.encoding = 'utf-8';
+  form.uploadDir = 'public';
+  form.keepExtensions = true;
   form.parse(req, function (err, fields, files){
     if(err) throw err;
     console.log("fields: ", fields, "files: ", files);
-    res.render('itemTry', {
+    //db.addItem(username, )
+    res.sendFile(__dirname + "/public/upload_3e40a24b1ffa0f74d833255041d31538.jpg")
+    /*res.render('itemTry', {
       files: files
-    });
+    });*/
   });
-  //res.redirect('/');
 });
 
 app.get('/logout', function(req, res){
   req.session.destroy();
   res.redirect('/');
 });
-app.listen(port);
+app.listen(port, function(){
+  console.log("server start!");
+});
  /*
 MongoClient.connect("mongodb://localhost:27017",function(err,client){
   var db = client.db('test');

@@ -60,6 +60,17 @@ exports.loginCheck = function loginCheck(account, password, callback){
   });
 }
 //新增商品
-exports.addItem = function addItem(itemName, itemPrice, itemPicture){
-  
+exports.addItem = function addItem(username, itemName, itemPrice, itemPicture){
+  MongoClient.connect("mongodb://localhost:27017", function(err, client){
+    var db = client.db('test');
+    if (err) throw err;
+    db.collection('itemspace', function(err, collection){
+      collection.insert({
+        username: username,
+        itemname: itemName,
+        itemprice: itemPrice,
+        itempicture: itemPicture
+      })
+    });
+  });
 }

@@ -79,7 +79,8 @@
             Hi <%= username %>
             <a href="/logout">登出</a>
             <br>
-            <a href="/addItem">新增商品</a>
+            <% username = "/addItem/" + username %>
+            <a href="<%= username%>">新增商品</a>
             <% } else { %>
             <a href="/login">登入</a>
             <a href="/reg">註冊</a>
