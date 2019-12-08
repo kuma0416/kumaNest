@@ -25,16 +25,20 @@ app.set('view engine', 'ejs');
 
 app.use(session({
   secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: false,
+  username: "",
+  loginState: false
 }));
 
 app.get('/', function(req, res){
   var username = req.session.username;
+  var loginState = req.session.loginState;
   res.render('index',{
     username: username,
     duplicate: true,
-    login:""
+    login:"",
+    loginState: loginState
   });
 });
 
@@ -75,6 +79,8 @@ app.post('/login', function(req, res){
   var password = req.body.password;
   db.loginCheck(account, password, function(login,username){
     if(login == "success"){
+      req.session.username = username;
+      req.session.loginState = true;
       res.render('index',{
         login: "success",
         duplicate: true,
