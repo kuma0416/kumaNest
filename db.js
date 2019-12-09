@@ -1,7 +1,9 @@
 var MongoClient = require('mongodb').MongoClient;
 
+const uri = "mongodb+srv://kuma0416:plmil456@myfirstcluster-nufiw.mongodb.net/test?retryWrites=true&w=majority";
+
 exports.ConnectAndGet = function ConnectAndGet(callback){
-  MongoClient.connect("mongodb://localhost:27017", function(err, client){
+  MongoClient.connect(uri, function(err, client){
     var db = client.db('test');
     if (err) throw err;
     db.collection('Items', function(err, collection){
@@ -15,7 +17,7 @@ exports.ConnectAndGet = function ConnectAndGet(callback){
 }
 //註冊功能
 exports.WriteData = function WriteData(account, password, username, callback){
-  MongoClient.connect("mongodb://localhost:27017", function(err, client){
+  MongoClient.connect(uri, function(err, client){
     var db = client.db('test');
     if (err) throw err;
     db.collection('userspace', function(err, collection){
@@ -34,7 +36,7 @@ exports.WriteData = function WriteData(account, password, username, callback){
 }
 //插入註冊資料進資料庫
 function userInsert (account,password,username){
-  MongoClient.connect("mongodb://localhost:27017", function(err, client){
+  MongoClient.connect(uri, function(err, client){
     var db = client.db('test');
     if (err) throw err;
     db.collection('userspace', function(err, collection){
@@ -44,7 +46,7 @@ function userInsert (account,password,username){
 }
 //登入
 exports.loginCheck = function loginCheck(account, password, callback){
-  MongoClient.connect("mongodb://localhost:27017", function(err, client){
+  MongoClient.connect(uri, function(err, client){
     var db = client.db('test');
     if (err) throw err;
     db.collection('userspace', function(err, collection){
@@ -61,7 +63,7 @@ exports.loginCheck = function loginCheck(account, password, callback){
 }
 //新增商品
 exports.addItem = function addItem(username, itemName, itemPrice, itemPicture){
-  MongoClient.connect("mongodb://localhost:27017", function(err, client){
+  MongoClient.connect(uri, function(err, client){
     var db = client.db('test');
     if (err) throw err;
     db.collection('itemspace', function(err, collection){

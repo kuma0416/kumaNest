@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var fs = require('fs');
 var db = require('./db');
-const port = 3000;
+const port = process.env.PORT || 3000;
 var session = require('express-session');
 var formidable = require('formidable');
 
@@ -107,8 +107,7 @@ app.get('/addItem/:username', function(req, res){
   });
 });
 app.post('/addItem', function(req, res){
-  var username = req.session;
-  console.log(username);
+  var username = req.session.username;
   var form = new formidable.IncomingForm();
   form.encoding = 'utf-8';
   form.uploadDir = 'public';
@@ -116,11 +115,11 @@ app.post('/addItem', function(req, res){
   form.parse(req, function (err, fields, files){
     if(err) throw err;
     console.log("fields: ", fields, "files: ", files);
-    //db.addItem(username, )
-    res.sendFile(__dirname + "/public/upload_3e40a24b1ffa0f74d833255041d31538.jpg")
-    /*res.render('itemTry', {
+    db.addItem(username, fields.itemName, fields.itemPrice, files.itemPic);
+    //res.sendFile(__dirname + "/public/upload_3e40a24b1ffa0f74d833255041d31538.jpg")
+    res.render('itemTry', {
       files: files
-    });*/
+    });
   });
 });
 
